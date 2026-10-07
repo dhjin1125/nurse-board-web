@@ -23,7 +23,7 @@ import { registerSavedSyncRoutes, savedSyncId, savedSyncPairingId } from '../lib
 const NOW = '2026-08-21T09:00:00.000Z';
 const LATER = '2026-08-21T10:00:00.000Z';
 const TOKEN = 'A'.repeat(43);
-const LEGACY_TOKEN = "synthetic-legacy-sync";
+const LEGACY_TOKEN = "AAAA-BBBB-CCCC-DDDD";
 const PAIRING_CODE = '0427';
 const job = (id, title = `공고 ${id}`) => ({
   id,
