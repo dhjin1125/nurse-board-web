@@ -27,3 +27,17 @@ npm start
 - 회사 홈페이지: [nodeoff.kr](https://nodeoff.kr)
 
 현재 개발 상태와 공개 주소는 회사 홈페이지와 함께 관리합니다.
+
+## 공개 이력과 개발 경과
+
+2026년 10월 7일 기존 비공개 작업을 정리해 처음 공개한 저장소입니다. 개발 시작일과 공개 커밋 날짜는 다릅니다. [개발 경과와 공개 범위](docs/development-history.md)를 확인해 주세요.
+
+## Claude API 도입 계획
+
+주력 서비스는 Nurse Board입니다. 현재 공개 기능은 공고 탐색·저장·지원 관리이며, Claude API는 아직 운영 연동 전입니다. 한국어 요청을 검색 조건으로 바꾸고 공고 원문에서 자격·근무 조건을 추출하는 기능을 계획하고 있습니다. 원문 근거와 없는 정보의 구분을 유지하고, 초기 사용자와 정확성·응답 시간·요청당 비용을 평가한 뒤 적용합니다. [현재 기능과 도입 계획](https://nodeoff.kr/products/nurse-board#claude-plan).
+
+## Screenshot
+
+![Public service screen](docs/screenshots/nurse-board-list.png)
+
+Captured from the actual public website on 2026-10-07. This is a point-in-time view; sample UI illustrations on the company homepage are labeled as illustrations.
