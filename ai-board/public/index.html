@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="only light" />
+  <meta name="theme-color" content="#ffffff" />
+  <meta name="description" content="AI·AX·앱 개발 채용 공고를 모아보는 로컬 전용 보드" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%231b8064'/%3E%3Ctext x='12' y='16.5' font-size='11' font-weight='700' text-anchor='middle' fill='white'%3EAI%3C/text%3E%3C/svg%3E" />
+  <link rel="preload" as="style" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" /></noscript>
+  <link rel="stylesheet" href="/styles.css" />
+  <title>AI Board — AI·AX·앱 개발 채용 모음</title>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="/">AI Board</a>
+      <div class="topbar-status" id="collectStatus">로컬 전용</div>
+      <button class="refresh-btn" id="refreshBtn" type="button">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 16h5v5"/></svg>
+        <span id="refreshLabel">새로고침</span>
+      </button>
+    </div>
+  </header>
+
+  <section class="intro">
+    <div class="intro-inner">
+      <h1>AI·AX·앱 개발 공고</h1>
+      <p class="intro-sub">여러 채용처에서 AI·데이터·모바일 앱 직무만 모읍니다. 새로고침을 누를 때만 수집합니다.</p>
+      <div class="controls">
+        <input type="search" id="searchInput" placeholder="제목이나 회사로 검색" autocomplete="off" />
+        <div class="selects">
+          <select id="roleSelect" aria-label="직무"></select>
+          <select id="regionSelect" aria-label="지역"></select>
+          <select id="employmentSelect" aria-label="고용형태"></select>
+          <select id="experienceSelect" aria-label="경력"></select>
+          <select id="deadlineSelect" aria-label="마감 상태"></select>
+          <select id="sortSelect" aria-label="정렬">
+            <option value="tier">추천순(등급)</option>
+            <option value="collected">최신 수집순</option>
+            <option value="published">등록일 최신순</option>
+            <option value="deadline">마감 임박순</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <nav class="tabs" id="tabs" aria-label="목록 탭">
+    <button type="button" data-tab="all" class="tab active">AI 공고 <span class="tab-count" id="countAll">0</span></button>
+    <button type="button" data-tab="review" class="tab">미분류 <span class="tab-count" id="countReview">0</span></button>
+    <button type="button" data-tab="saved" class="tab">저장 <span class="tab-count" id="countSaved">0</span></button>
+    <button type="button" data-tab="hidden" class="tab">숨김 <span class="tab-count" id="countHidden">0</span></button>
+    <button type="button" data-tab="sources" class="tab">수집원</button>
+  </nav>
+
+  <main class="list-wrap">
+    <div class="list-meta" id="listMeta"></div>
+    <ul class="job-list" id="jobList"></ul>
+    <div class="empty" id="emptyState" hidden></div>
+    <section class="sources-panel" id="sourcesPanel" hidden></section>
+  </main>
+
+  <footer class="foot">
+    <p>로컬 전용 수집 보드입니다. 지원 전에는 채용처 원문에서 마감일과 자격 조건을 확인하세요.</p>
+  </footer>
+
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
