@@ -1,0 +1,34 @@
+{
+  "name": "nurse-board",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "server": "node --watch server.mjs",
+    "start": "concurrently -k \"npm:server\" \"npm:dev\"",
+    "serve": "node server.mjs",
+    "ai-board": "node ai-board/server.mjs",
+    "build": "vite build",
+    "test": "node --test",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "@vercel/blob": "^2.6.1",
+    "@vitejs/plugin-react": "latest",
+    "cheerio": "latest",
+    "concurrently": "latest",
+    "express": "latest",
+    "fetch-cookie": "^3.2.0",
+    "iconv-lite": "^0.7.3",
+    "lucide-react": "latest",
+    "pdf-parse": "^2.4.5",
+    "react": "latest",
+    "react-dom": "latest",
+    "tough-cookie": "^6.0.2",
+    "vite": "latest"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.61.1",
+    "playwright": "^1.61.1"
+  }
+}

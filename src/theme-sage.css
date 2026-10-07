@@ -1,0 +1,889 @@
+/* 간호 보드 정식 테마 — 파스텔 세이지 에디토리얼.
+   기존 스타일 위에 올라가는 최종 시각 레이어 (main.jsx에서 마지막으로 import).
+   방향: 아이보리 배경 + 민트→크림 파스텔 컨트롤 존 + 흰 라운드 카드 +
+         딥 포레스트 잉크 + #1b8064 초록 액센트. */
+
+:root {
+  --rk-bg: #faf7f1;            /* 따뜻한 아이보리 페이지 */
+  --rk-surface: #f1f0ea;        /* 연한 중립 표면 */
+  --rk-tint: #eaf1ed;           /* 연한 초록 회색 */
+  --rk-hero: linear-gradient(158deg, #d9ebde 0%, #e8f1e8 48%, #f6f2e7 100%); /* 파스텔 세이지 존 */
+  --rk-ink: #1e3a30;            /* 존 위 텍스트 — 딥 포레스트 */
+  --rk-ink-sub: rgba(30, 58, 48, .66);
+  --rk-ink-faint: rgba(30, 58, 48, .5);
+  --rk-mint: #9fd6bc;
+  --rk-text: #191f28;
+  --rk-sub: #6b7684;
+  --rk-faint: #9aa3ac;
+  --rk-border: #e8e7e2;
+  --rk-border-soft: #efeee9;
+  --rk-accent: #1b8064;
+  --rk-accent-deep: #14573f;
+  --rk-accent-bright: #2ba880;
+  --rk-accent-tint: #edf6f1;
+  --rk-warn: #b25c09;
+  --rk-warn-tint: #faf4e4;
+  --rk-danger: #d64545;
+  --rk-major: #3346a8;
+  --rk-major-tint: #eef1fd;
+  --rk-radius: 18px;
+  --rk-card-shadow: 0 1px 3px rgba(45, 50, 40, .05);
+  --rk-card-hover: 0 10px 28px rgba(45, 50, 40, .1);
+}
+
+html, body {
+  background: var(--rk-bg) !important;
+  color: var(--rk-text) !important;
+  font-family: 'Pretendard Variable', Pretendard, 'Noto Sans KR', sans-serif !important;
+}
+.jobs-focus-shell { background: var(--rk-bg) !important; }
+.jobs-focus-shell > main { background: var(--rk-bg) !important; }
+
+/* 본문 폭을 읽기 좋은 넓이로 */
+.jobs-focus-shell .jobs-explorer { max-width: 920px !important; margin: 0 auto !important; width: 100% !important; }
+
+/* 모든 DM Mono 라벨 → Pretendard */
+.app-header p, .home-intro > div > span, .section-title > div > span,
+.application-overview > div > span, .panel-title > div > span,
+.settings-section > div > span, .onboarding-copy > span,
+.detail-section-heading > span, .section-title > b, .app-footer,
+.brand strong, .primary-nav em, .job-kicker, .focus-identity > div > span {
+  font-family: 'Pretendard Variable', Pretendard, 'Noto Sans KR', sans-serif !important;
+}
+
+/* ── 상단 헤더 ─────────────────────────── */
+.focus-header {
+  background: rgba(255, 255, 255, .85) !important;
+  backdrop-filter: saturate(1.6) blur(14px) !important;
+  -webkit-backdrop-filter: saturate(1.6) blur(14px) !important;
+  border-bottom: 1px solid var(--rk-border-soft) !important;
+  min-height: 64px !important;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+.focus-identity .brand > span {
+  width: 38px !important;
+  height: 38px !important;
+  border-radius: 13px !important;
+  background: linear-gradient(150deg, #22a07e 0%, var(--rk-accent) 60%, #16704f 100%) !important;
+  color: #fff !important;
+  box-shadow: 0 2px 7px rgba(27, 128, 100, .28) !important;
+  display: grid !important;
+  place-items: center !important;
+  overflow: hidden !important;
+}
+.focus-identity .brand > span svg { width: 22px !important; height: 22px !important; }
+.focus-identity > div > span { color: var(--rk-sub) !important; font-size: 12px !important; letter-spacing: 0 !important; }
+.focus-identity > div > strong { color: var(--rk-text) !important; font-size: 17px !important; font-weight: 750 !important; letter-spacing: -.02em !important; }
+
+/* 상단 탭 네비 — 소프트 필 컨테이너 */
+.primary-nav {
+  display: flex !important;
+  gap: 2px !important;
+  background: var(--rk-surface) !important;
+  border-radius: 14px !important;
+  padding: 4px !important;
+}
+.primary-nav button {
+  min-height: 38px !important;
+  border-radius: 10px !important;
+  background: transparent !important;
+  color: var(--rk-sub) !important;
+  padding: 0 16px !important;
+  font-size: 13px !important;
+  font-weight: 650 !important;
+  box-shadow: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 7px !important;
+}
+.primary-nav button:hover { color: var(--rk-text) !important; background: rgba(255,255,255,.7) !important; }
+.primary-nav button.active {
+  background: #fff !important;
+  color: var(--rk-accent) !important;
+  box-shadow: 0 1px 3px rgba(25, 31, 40, .1) !important;
+}
+.primary-nav svg { width: 16px !important; }
+.primary-nav em {
+  font-style: normal !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  color: var(--rk-sub) !important;
+  background: var(--rk-surface) !important;
+  border-radius: 7px !important;
+  padding: 1px 6px !important;
+  margin-left: 2px !important;
+}
+.primary-nav button.active em { color: var(--rk-accent) !important; background: var(--rk-accent-tint) !important; }
+
+/* 헤더 오른쪽 도구 */
+.focus-header-tools { gap: 6px !important; }
+.feedback-menu-button, .hidden-menu-button {
+  min-width: 0 !important;
+  height: 40px !important;
+  border: 1px solid var(--rk-border) !important;
+  border-radius: 12px !important;
+  background: #fff !important;
+  color: var(--rk-sub) !important;
+  font-size: 12px !important;
+  font-weight: 650 !important;
+  padding: 0 12px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+.feedback-menu-button:hover, .hidden-menu-button:hover { color: var(--rk-text) !important; border-color: #d3d6d1 !important; }
+.hidden-menu-button em {
+  font-style: normal !important;
+  background: var(--rk-danger) !important;
+  color: #fff !important;
+  border-radius: 8px !important;
+  padding: 1px 6px !important;
+  font-size: 11px !important;
+}
+.focus-sync {
+  border: 1px solid var(--rk-border) !important;
+  border-radius: 12px !important;
+  background: #fff !important;
+  color: var(--rk-sub) !important;
+}
+.focus-sync b { color: var(--rk-text) !important; font-size: 12px !important; }
+.focus-sync small { color: var(--rk-sub) !important; }
+
+/* ── 상단 컨트롤 존 — 파스텔 세이지 패널 ─── */
+.jobs-focus-shell .discovery-panel {
+  border: 0 !important;
+  border-radius: 24px 24px 0 0 !important;
+  background: var(--rk-hero) !important;
+  box-shadow: none !important;
+  padding: 32px 30px 18px !important;
+  margin: 0 !important;
+}
+.jobs-focus-shell .recommended-scope-row {
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 100%), var(--rk-hero) !important;
+  margin: 0 !important;
+  padding: 0 30px 16px !important;
+  display: flex !important;
+  justify-content: flex-start !important;
+}
+.jobs-focus-shell .search-row {
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 100%), var(--rk-hero) !important;
+  border-radius: 0 0 24px 24px !important;
+  margin: 0 0 26px !important;
+  padding: 0 30px 28px !important;
+  gap: 8px !important;
+}
+/* 전체 공고 뷰: discovery-panel이 없을 때 hero가 존의 상단 */
+.jobs-focus-shell .jobs-focus-hero {
+  background: var(--rk-hero) !important;
+  border: 0 !important;
+  border-radius: 24px 24px 0 0 !important;
+  padding: 32px 30px 18px !important;
+  margin: 0 !important;
+  align-items: start !important;
+}
+.jobs-focus-shell .jobs-focus-hero + .search-row { border-radius: 0 0 24px 24px !important; }
+
+/* 존 안 텍스트·컨트롤 */
+.jobs-focus-shell .discovery-intro > span { color: var(--rk-accent) !important; letter-spacing: 0 !important; font-size: 12px !important; font-weight: 700 !important; }
+.jobs-focus-shell .discovery-intro h1 { color: var(--rk-ink) !important; font-weight: 750 !important; letter-spacing: -.02em !important; font-size: 27px !important; line-height: 1.28 !important; }
+.jobs-focus-shell .discovery-intro p { color: var(--rk-ink-sub) !important; }
+.jobs-focus-shell .discovery-note { color: var(--rk-ink-faint) !important; }
+.jobs-focus-shell .discovery-note summary { color: var(--rk-ink-faint) !important; font-size: 12px !important; }
+.jobs-focus-shell .jobs-focus-hero .jobs-focus-copy > span { color: var(--rk-accent) !important; }
+.jobs-focus-shell .jobs-focus-hero .jobs-focus-copy h1 { color: var(--rk-ink) !important; }
+.jobs-focus-shell .jobs-focus-hero .jobs-focus-copy p { color: var(--rk-ink-sub) !important; }
+
+.content-panel { border: 0 !important; border-radius: 0 !important; background: transparent !important; box-shadow: none !important; }
+
+/* 놓치기 아까운 후보 — 따뜻한 콜아웃 카드 */
+.jobs-focus-shell .overlooked-panel {
+  border: 1px solid #eee2c2 !important;
+  border-radius: 20px !important;
+  background: #fdfaf1 !important;
+  padding: 6px 22px 20px !important;
+  margin: 0 0 30px !important;
+  box-shadow: var(--rk-card-shadow) !important;
+}
+.jobs-focus-shell .overlooked-panel .section-title { border-bottom: 0 !important; padding: 16px 0 10px !important; }
+.jobs-focus-shell .overlooked-panel .section-title > div > span { color: #9a7a35 !important; font-weight: 700 !important; }
+.jobs-focus-shell .overlooked-panel .result-count {
+  background: #fff !important;
+  border: 1px solid #ead9ab !important;
+  border-radius: 9px !important;
+  color: #8a6a2b !important;
+  padding: 4px 11px !important;
+  font-size: 12px !important;
+}
+.jobs-focus-shell .overlooked-panel .overlooked-toggle {
+  background: #fff !important;
+  border: 1px solid #ead9ab !important;
+  color: #8a6a2b !important;
+  border-radius: 10px !important;
+}
+.overlooked-empty { color: #8a7d55 !important; border: 0 !important; padding: 6px 0 2px !important; font-size: 12.5px !important; }
+.jobs-focus-shell .overlooked-panel .job-card { background: #fff !important; border: 1px solid #efe6cf !important; }
+.jobs-focus-shell .overlooked-panel .job-card:hover { border-color: #e2d5ae !important; }
+
+.jobs-focus-copy > span { color: var(--rk-sub) !important; font-size: 12px !important; font-weight: 650 !important; }
+.jobs-focus-copy h1 { color: var(--rk-text) !important; font-weight: 750 !important; letter-spacing: -.02em !important; }
+.jobs-focus-copy p { color: var(--rk-sub) !important; }
+
+/* 지역 스코프 — 흰 라운드 필 */
+.region-scope { gap: 7px !important; }
+.region-scope button {
+  display: inline-flex !important;
+  align-items: baseline !important;
+  gap: 6px !important;
+  border: 1px solid var(--rk-border) !important;
+  border-radius: 12px !important;
+  background: #fff !important;
+  color: var(--rk-text) !important;
+  padding: 9px 15px !important;
+  min-height: 0 !important;
+  box-shadow: var(--rk-card-shadow) !important;
+}
+.region-scope button span { font-size: 13px !important; font-weight: 650 !important; }
+.region-scope button small { font-size: 11px !important; color: var(--rk-sub) !important; }
+.region-scope button:hover { border-color: #cfd4cd !important; }
+.region-scope button.active {
+  background: var(--rk-accent-tint) !important;
+  border-color: var(--rk-accent) !important;
+  color: var(--rk-accent) !important;
+}
+.region-scope button.active small { color: var(--rk-accent) !important; }
+
+/* 직무 탭 — 존 위 흰 칩 */
+.care-role-tabs { gap: 7px !important; margin-top: 4px !important; }
+.jobs-focus-shell .care-role-tabs button {
+  border: 1px solid rgba(30, 58, 48, .14) !important;
+  border-radius: 11px !important;
+  background: rgba(255, 255, 255, .72) !important;
+  color: var(--rk-ink-sub) !important;
+  font-weight: 650 !important;
+  font-size: 12.5px !important;
+  box-shadow: none !important;
+}
+.jobs-focus-shell .care-role-tabs button.active,
+.jobs-focus-shell .care-role-tabs button[aria-pressed="true"] {
+  background: var(--rk-ink) !important;
+  border-color: var(--rk-ink) !important;
+  color: #fff !important;
+}
+/* 발견 모드 탭 — 흰 세그먼트 */
+.discovery-tabs {
+  display: inline-flex !important;
+  gap: 3px !important;
+  background: rgba(255, 255, 255, .72) !important;
+  border: 1px solid rgba(30, 58, 48, .12) !important;
+  border-radius: 14px !important;
+  padding: 4px !important;
+  margin: 14px 0 12px !important;
+  box-shadow: none !important;
+}
+.jobs-focus-shell .discovery-tabs button {
+  border: 0 !important;
+  border-radius: 10px !important;
+  background: transparent !important;
+  color: var(--rk-ink-sub) !important;
+  font-weight: 650 !important;
+  font-size: 12.5px !important;
+  padding: 9px 16px !important;
+  min-height: 0 !important;
+}
+.jobs-focus-shell .discovery-tabs button b { font-size: 13px !important; color: var(--rk-ink-sub) !important; }
+.jobs-focus-shell .discovery-tabs button[aria-pressed="true"], .jobs-focus-shell .discovery-tabs button.active {
+  background: var(--rk-ink) !important;
+  color: #fff !important;
+}
+.jobs-focus-shell .discovery-tabs button[aria-pressed="true"] b, .jobs-focus-shell .discovery-tabs button.active b { color: #fff !important; }
+
+/* ── 검색·필터·새로고침 ─────────────────── */
+.jobs-focus-shell .search-control {
+  border: 1px solid var(--rk-border) !important;
+  border-radius: 15px !important;
+  background: #fff !important;
+  box-shadow: var(--rk-card-shadow) !important;
+  min-height: 50px !important;
+}
+.jobs-focus-shell .search-control:focus-within { border-color: var(--rk-accent) !important; }
+.jobs-focus-shell .search-control input { font-size: 14px !important; color: var(--rk-text) !important; }
+.jobs-focus-shell .search-control > svg { color: var(--rk-sub) !important; }
+
+.jobs-focus-shell .refresh-button {
+  border: 0 !important;
+  border-radius: 15px !important;
+  background: var(--rk-ink) !important;
+  color: #fff !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  min-height: 50px !important;
+  box-shadow: 0 2px 10px rgba(30, 58, 48, .22) !important;
+}
+.jobs-focus-shell .refresh-button:hover { background: var(--rk-accent-deep) !important; filter: none !important; }
+.jobs-focus-shell .mobile-filter-button {
+  border: 1px solid var(--rk-border) !important;
+  border-radius: 15px !important;
+  background: #fff !important;
+  color: var(--rk-text) !important;
+  box-shadow: var(--rk-card-shadow) !important;
+}
+
+/* 필터 셀렉트 */
+.select-control {
+  border: 1px solid var(--rk-border) !important;
+  border-radius: 13px !important;
+  background: #fff !important;
+  min-height: 44px !important;
+}
+.select-control:focus-within { border-color: var(--rk-accent) !important; box-shadow: none !important; }
+.select-control select { font-size: 13px !important; color: var(--rk-text) !important; }
+.filter-fields label > span, .keyword-row label > span, .editor-grid label > span {
+  color: var(--rk-sub) !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+}
+
+/* 빠른 토글 */
+.nonshift-focus.active, .nonshift-toggle.active, .employment-quick-toggle.active,
+.source-filters button.active {
+  background: var(--rk-accent) !important;
+  color: #fff !important;
+}
+.source-filters button.active b { background: var(--rk-accent-tint) !important; color: var(--rk-accent) !important; }
+
+/* ── 섹션 타이틀 ─────────────────────── */
+.jobs-focus-shell .section-title {
+  background: transparent !important;
+  border-bottom: 1px solid var(--rk-border) !important;
+  min-height: 0 !important;
+  padding: 8px 4px 16px !important;
+}
+.jobs-focus-shell .section-title > div > span { color: var(--rk-accent) !important; font-size: 12px !important; letter-spacing: 0 !important; font-weight: 700 !important; }
+.jobs-focus-shell .section-title h1, .jobs-focus-shell .section-title h2 {
+  color: var(--rk-text) !important;
+  font-size: 22px !important;
+  font-weight: 750 !important;
+  letter-spacing: -.02em !important;
+}
+.jobs-focus-shell .section-title p { color: var(--rk-sub) !important; font-size: 12.5px !important; }
+.jobs-focus-shell .list-title-actions { gap: 10px !important; align-items: center !important; }
+.jobs-focus-shell .section-title > b {
+  background: var(--rk-surface) !important;
+  color: var(--rk-sub) !important;
+  border-radius: 8px !important;
+  font-size: 11px !important;
+}
+
+/* 정렬 세그먼트 */
+.job-sort-control {
+  background: var(--rk-surface) !important;
+  border: 1px solid var(--rk-border-soft) !important;
+  border-radius: 12px !important;
+  padding: 3px !important;
+}
+.job-sort-control button {
+  border-radius: 9px !important;
+  color: var(--rk-sub) !important;
+  font-size: 12px !important;
+  font-weight: 650 !important;
+}
+.job-sort-control button.active {
+  background: #fff !important;
+  color: var(--rk-accent) !important;
+  box-shadow: 0 1px 3px rgba(25, 31, 40, .1) !important;
+}
+.jobs-focus-shell .result-count {
+  display: inline-flex !important;
+  align-items: center !important;
+  min-height: 34px !important;
+  color: var(--rk-sub) !important;
+  background: var(--rk-surface) !important;
+  border-radius: 10px !important;
+  padding: 0 12px !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+}
+.jobs-focus-shell .result-count b, .jobs-focus-shell .result-count strong { color: var(--rk-text) !important; }
+
+/* ── 등급 그룹 헤더 ─────────────────── */
+.jobs-focus-shell .job-list-group {
+  border: 0 !important;
+  border-radius: 14px !important;
+  border-bottom: 0 !important;
+  background: var(--rk-surface) !important;
+  box-shadow: none !important;
+  padding: 13px 18px !important;
+  margin: 14px 0 10px !important;
+}
+/* S 그룹만 초록 틴트 — 그룹 단위 우선순위 신호 */
+.jobs-focus-shell .job-list-group.tier-S { background: var(--rk-accent-tint) !important; }
+.jobs-focus-shell button.job-list-group:hover { background: #e9ece8 !important; filter: none !important; }
+.jobs-focus-shell button.job-list-group.tier-S:hover { background: #e2f0e9 !important; }
+.jobs-focus-shell .application-tier-section { margin-bottom: 0 !important; }
+.jobs-focus-shell .job-list-group .tier-group-order { color: var(--rk-sub) !important; background: transparent !important; }
+.jobs-focus-shell .tier-group-grade { border-radius: 10px !important; font-weight: 800 !important; }
+.jobs-focus-shell .job-list-group.tier-S .tier-group-grade { background: var(--rk-accent) !important; color: #fff !important; }
+.jobs-focus-shell .job-list-group.tier-A .tier-group-grade { background: var(--rk-accent-tint) !important; color: var(--rk-accent) !important; }
+.jobs-focus-shell .job-list-group.tier-B .tier-group-grade { background: #fff !important; color: var(--rk-sub) !important; border: 1px solid var(--rk-border) !important; }
+.jobs-focus-shell .job-list-group.tier-C .tier-group-grade,
+.jobs-focus-shell .job-list-group.tier-exclude .tier-group-grade { background: none !important; color: var(--rk-faint) !important; border: 1px solid var(--rk-border) !important; }
+.jobs-focus-shell .job-list-group h3 { color: var(--rk-text) !important; }
+.jobs-focus-shell .job-list-group.tier-S h3, .jobs-focus-shell .job-list-group.tier-S p,
+.jobs-focus-shell .job-list-group.tier-S .tier-group-order { color: var(--rk-sub) !important; }
+.jobs-focus-shell .job-list-group.tier-S h3 { color: var(--rk-text) !important; }
+.jobs-focus-shell .job-list-group > b, .jobs-focus-shell .job-list-group.tier-S > b { color: var(--rk-sub) !important; }
+.jobs-focus-shell .job-list-group p, .jobs-focus-shell .job-list-group .tier-group-order { color: var(--rk-sub) !important; }
+.jobs-focus-shell .tier-collapse-tools {
+  min-height: 0 !important;
+  padding: 2px 6px !important;
+  margin: 10px 0 -4px !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-bottom: 0 !important;
+}
+.jobs-focus-shell .tier-collapse-tools > span, .jobs-focus-shell .tier-collapse-tools label {
+  font-size: 11px !important; font-weight: 700 !important; color: var(--rk-faint) !important;
+  letter-spacing: .04em !important;
+}
+.jobs-focus-shell .tier-collapse-tools button {
+  min-height: 30px !important;
+  padding: 0 10px !important;
+  border: 1px solid var(--rk-border) !important;
+  border-radius: 9px !important;
+  color: var(--rk-sub) !important;
+  background: #fff !important;
+  font-size: 11.5px !important;
+}
+.jobs-focus-shell .tier-collapse-tools button:hover { background: var(--rk-surface) !important; }
+
+/* ── 공고 카드 — 소프트 라운드 카드 ────────── */
+.job-list { gap: 12px !important; }
+.jobs-focus-shell .job-card {
+  min-height: 0 !important;
+  border: 1px solid var(--rk-border) !important;
+  border-radius: var(--rk-radius) !important;
+  background: #fff !important;
+  box-shadow: var(--rk-card-shadow) !important;
+  transform: none !important;
+  transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease !important;
+}
+.jobs-focus-shell .job-card:hover {
+  border-color: #d9d9d2 !important;
+  box-shadow: var(--rk-card-hover) !important;
+  transform: translateY(-1px) !important;
+  background: #fff !important;
+}
+.jobs-focus-shell .job-card.career-priority { background: #fff !important; box-shadow: var(--rk-card-shadow) !important; }
+.jobs-focus-shell .job-card.schedule-confirmed, .jobs-focus-shell .job-card.schedule-likely { box-shadow: var(--rk-card-shadow) !important; }
+.jobs-focus-shell .job-card.application-tier-C, .jobs-focus-shell .job-card.application-tier-exclude { background: #fff !important; }
+.jobs-focus-shell .job-card.application-tier-exclude { opacity: .75 !important; }
+
+/* 카드 내부 — 본문 + 하단 메타 바(지역·마감·저장/숨김) 푸터 구조 */
+.jobs-focus-shell .job-card-main {
+  min-height: 0 !important;
+  padding: 15px 20px 10px !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  grid-template-rows: auto auto !important;
+  gap: 0 !important;
+}
+.jobs-focus-shell .job-copy h3 { margin: 5px 0 3px !important; }
+.jobs-focus-shell .job-facts { margin-top: 5px !important; }
+.jobs-focus-shell .job-trust { margin-top: 3px !important; }
+.jobs-focus-shell .job-copy { grid-column: 1 !important; grid-row: 1 !important; }
+.jobs-focus-shell .job-mark { display: none !important; }
+.jobs-focus-shell .open-detail { display: none !important; }
+/* 액션 아이콘 → 푸터 오른쪽 */
+.jobs-focus-shell .job-card-actions {
+  left: auto !important;
+  right: 14px !important;
+  top: auto !important;
+  bottom: 11px !important;
+  flex-direction: row !important;
+  gap: 2px !important;
+  opacity: .6 !important;
+  transition: opacity .15s ease !important;
+}
+.jobs-focus-shell .job-card:hover .job-card-actions { opacity: 1 !important; }
+.jobs-focus-shell .job-card-actions .save-button:hover,
+.jobs-focus-shell .hide-button:hover { background: var(--rk-surface) !important; color: var(--rk-text) !important; }
+.jobs-focus-shell .job-card-actions .save-button.active { color: var(--rk-accent) !important; }
+.jobs-focus-shell .hide-button.restore { color: var(--rk-accent) !important; }
+
+.jobs-focus-shell .job-copy { gap: 8px !important; }
+.jobs-focus-shell .job-copy h3 {
+  color: var(--rk-text) !important;
+  font-size: 18px !important;
+  font-weight: 750 !important;
+  letter-spacing: -.02em !important;
+  line-height: 1.4 !important;
+}
+.jobs-focus-shell .job-card-main:hover .job-copy h3 { color: var(--rk-accent) !important; }
+.jobs-focus-shell .job-copy > p { color: var(--rk-sub) !important; font-size: 13.5px !important; font-weight: 550 !important; }
+.jobs-focus-shell .job-source-name { color: var(--rk-sub) !important; }
+.jobs-focus-shell .job-kicker {
+  font-family: 'Pretendard Variable', Pretendard, sans-serif !important;
+  align-items: center !important;
+  gap: 5px !important;
+}
+/* 출처·상태 칩은 오른쪽으로 — 왼쪽엔 등급/근무형태만 */
+.jobs-focus-shell .job-kicker .job-source-name { margin-left: auto !important; font-size: 11.5px !important; color: var(--rk-faint) !important; }
+
+/* 등급 배지 — 카드에서 가장 먼저 보이는 신호 */
+.jobs-focus-shell .application-tier-badge {
+  border-radius: 9px !important;
+  font-weight: 800 !important;
+  font-size: 12.5px !important;
+  padding: 5px 11px !important;
+  gap: 4px !important;
+}
+.jobs-focus-shell .application-tier-badge.tier-S { background: var(--rk-accent) !important; }
+.jobs-focus-shell .application-tier-badge.tier-S strong { color: #fff !important; }
+.jobs-focus-shell .application-tier-badge.tier-A { background: var(--rk-accent-tint) !important; color: var(--rk-accent) !important; }
+.jobs-focus-shell .application-tier-badge.tier-A strong { color: var(--rk-accent) !important; }
+.jobs-focus-shell .application-tier-badge.tier-B { background: var(--rk-surface) !important; color: var(--rk-sub) !important; border: 0 !important; }
+.jobs-focus-shell .application-tier-badge.tier-B strong { color: var(--rk-sub) !important; }
+.jobs-focus-shell .application-tier-badge.tier-C { background: none !important; color: var(--rk-faint) !important; border: 1px solid var(--rk-border) !important; }
+.jobs-focus-shell .application-tier-badge.tier-C strong { color: var(--rk-faint) !important; }
+.jobs-focus-shell .application-tier-badge.tier-exclude { background: #fdf0ee !important; color: var(--rk-danger) !important; }
+.jobs-focus-shell .application-tier-badge.tier-exclude strong { color: var(--rk-danger) !important; }
+
+.jobs-focus-shell .schedule-badge.confirmed { background: var(--rk-accent-tint) !important; color: var(--rk-accent) !important; }
+.jobs-focus-shell .schedule-badge.likely { background: #f5f6dc !important; color: #6b7717 !important; }
+.jobs-focus-shell .schedule-badge.shift { background: #fdf0ee !important; color: #b0492f !important; }
+.jobs-focus-shell .schedule-badge.conflict { background: var(--rk-warn-tint) !important; color: var(--rk-warn) !important; }
+.jobs-focus-shell .schedule-badge.unknown { background: var(--rk-surface) !important; color: var(--rk-sub) !important; }
+
+.jobs-focus-shell .job-kicker em {
+  border-radius: 7px !important;
+  font-size: 11px !important;
+  font-weight: 650 !important;
+  padding: 3px 8px !important;
+  background: var(--rk-surface) !important;
+  color: var(--rk-sub) !important;
+}
+/* 안 본 공고·새 공고 — 솔리드 대신 연한 틴트로 부드럽게 */
+.jobs-focus-shell .job-kicker em.listing-fresh, .jobs-focus-shell .job-kicker em.discovery-unseen-badge {
+  background: var(--rk-accent-tint) !important;
+  color: var(--rk-accent) !important;
+  border: 1px solid #cfe6da !important;
+}
+.jobs-focus-shell .job-kicker em.listing-stale { background: var(--rk-surface) !important; color: var(--rk-faint) !important; }
+/* 수집 출처(직행·사람인 등) — 읽히도록 진하게 */
+.jobs-focus-shell .job-kicker .job-source-name { color: var(--rk-sub) !important; font-weight: 650 !important; }
+
+/* 카드 압축 — '지원 검토 가능 · 확인:' 근거 라인 제거로 세로 축소 */
+.jobs-focus-shell .job-card .application-tier-reason { display: none !important; }
+.jobs-focus-shell .career-priority-reason b { background: var(--rk-accent-tint) !important; color: var(--rk-accent) !important; border-radius: 7px !important; }
+.jobs-focus-shell .application-tier-reason em { color: var(--rk-warn) !important; border-left-color: var(--rk-border) !important; margin-left: 8px !important; padding-left: 8px !important; }
+
+/* 사실 칩 → 가운데점으로 이어진 조건 텍스트 — 칩 수프 제거 */
+.jobs-focus-shell .job-facts { display: flex !important; flex-wrap: wrap !important; align-items: baseline !important; gap: 0 0 !important; row-gap: 6px !important; line-height: 1.5 !important; }
+.jobs-focus-shell .job-facts span {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  color: var(--rk-sub) !important;
+  font-size: 12.5px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+.jobs-focus-shell .job-facts span + span::before {
+  content: '·';
+  margin: 0 7px;
+  color: #c4c9cd;
+}
+.jobs-focus-shell .job-facts span.unknown { color: var(--rk-faint) !important; }
+
+/* 하단 메타 바 — 지역·마감이 카드 푸터에 나란히 */
+.jobs-focus-shell .job-meta { color: var(--rk-sub) !important; font-size: 12.5px !important; background: transparent !important; }
+.jobs-focus-shell .job-primary-meta {
+  grid-column: 1 / -1 !important;
+  grid-row: 2 !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 18px !important;
+  border-top: 1px solid var(--rk-border-soft) !important;
+  margin-top: 9px !important;
+  padding: 9px 78px 0 0 !important;
+}
+.jobs-focus-shell .job-primary-meta .job-meta { min-height: 0 !important; padding: 0 !important; background: transparent !important; font-size: 12.5px !important; }
+.jobs-focus-shell .job-primary-meta .job-meta.region { font-weight: 650 !important; color: var(--rk-text) !important; }
+.jobs-focus-shell .job-primary-meta .job-meta.deadline {
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  color: var(--rk-text) !important;
+  letter-spacing: -.01em !important;
+}
+.jobs-focus-shell .job-meta.deadline.today, .jobs-focus-shell .job-meta.deadline.soon { color: var(--rk-warn) !important; }
+.jobs-focus-shell .job-meta.deadline.closed { color: var(--rk-faint) !important; font-weight: 650 !important; }
+.job-primary-meta a { color: var(--rk-sub) !important; }
+.job-primary-meta a:hover { color: var(--rk-accent) !important; }
+/* 푸터 메타 아이콘 — 텍스트 색과 통일 */
+.jobs-focus-shell .job-primary-meta .job-meta svg { opacity: .75 !important; }
+
+.listing-age-badge { background: var(--rk-surface) !important; color: var(--rk-sub) !important; border-radius: 8px !important; }
+.listing-age-badge.age-new { background: var(--rk-accent-tint) !important; color: var(--rk-accent) !important; }
+
+/* 카드 맨 아래 등록 정보 라인 — 출처는 읽히게, 날짜는 흐리게 */
+.jobs-focus-shell .job-trust {
+  display: flex !important; align-items: center !important; gap: 8px !important;
+  font-size: 11.5px !important; color: var(--rk-faint) !important;
+}
+.jobs-focus-shell .job-trust small { color: var(--rk-faint) !important; }
+.jobs-focus-shell .job-trust .job-source-mobile { color: var(--rk-sub) !important; font-size: 12px !important; font-weight: 650 !important; }
+.jobs-focus-shell .job-trust .listing-age-badge { padding: 2px 8px !important; font-size: 11px !important; }
+.jobs-focus-shell .job-trust .job-published-date { color: var(--rk-faint) !important; font-style: normal !important; }
+
+/* 토스트 + 실행 취소 버튼 */
+.status-toast { display: flex !important; align-items: center !important; gap: 12px !important; }
+.status-toast > span { flex: 1; }
+.status-toast-action {
+  flex: none; padding: 7px 13px !important; border: 0 !important; border-radius: 9px !important;
+  background: rgba(255, 255, 255, .16) !important; color: #fff !important;
+  font: inherit !important; font-weight: 700 !important; font-size: 12.5px !important; white-space: nowrap !important; cursor: pointer;
+}
+.status-toast-action:active { background: rgba(255, 255, 255, .28) !important; }
+
+/* 접힌 등급 그룹 — hidden 속성이 display override에 지지 않도록 보장 (specificity를 한 단계 높여 !important flex를 이김) */
+.jobs-focus-shell .application-tier-cards[hidden],
+.application-tier-cards[hidden] { display: none !important; }
+
+/* 숨기기/복원 — 카드가 접히며 사라지는 퇴장 애니메이션 (App.jsx의 inline height와 짝) */
+.job-card.leaving {
+  height: 0 !important; min-height: 0 !important;
+  padding-top: 0 !important; padding-bottom: 0 !important;
+  margin-top: 0 !important; margin-bottom: 0 !important;
+  border-width: 0 !important; overflow: hidden !important;
+  opacity: 0 !important; transform: scale(.97) !important;
+  pointer-events: none !important;
+  transition: height .24s ease, opacity .16s ease, transform .22s ease, padding .22s ease, margin .22s ease !important;
+}
+
+/* 후보 증거 */
+.jobs-focus-shell .opportunity-evidence { color: var(--rk-sub) !important; }
+.jobs-focus-shell .opportunity-evidence b { background: var(--rk-warn-tint) !important; color: var(--rk-warn) !important; }
+.jobs-focus-shell .opportunity-evidence em { color: var(--rk-warn) !important; }
+
+/* ── 버튼 ─────────────────────────── */
+.primary-button {
+  border-radius: 13px !important;
+  background: var(--rk-accent) !important;
+  color: #fff !important;
+  font-size: 13px !important;
+}
+.primary-button:hover { background: var(--rk-accent-deep) !important; }
+.secondary-button {
+  border: 1px solid var(--rk-border) !important;
+  border-radius: 13px !important;
+  background: #fff !important;
+  color: var(--rk-sub) !important;
+  font-size: 13px !important;
+}
+.secondary-button:hover { border-color: #d3d6d1 !important; color: var(--rk-text) !important; }
+.text-button { color: var(--rk-sub) !important; font-size: 12px !important; }
+.text-button:hover { color: var(--rk-accent) !important; }
+.icon-button {
+  border: 1px solid var(--rk-border) !important;
+  border-radius: 12px !important;
+  background: #fff !important;
+  color: var(--rk-sub) !important;
+  width: 40px !important;
+  height: 40px !important;
+}
+.icon-button:hover { border-color: #d3d6d1 !important; color: var(--rk-text) !important; }
+.detail-progress { background: var(--rk-accent) !important; }
+.detail-progress:hover { background: var(--rk-accent-deep) !important; }
+.detail-save { border-radius: 12px !important; }
+.detail-save.active { color: var(--rk-accent) !important; }
+
+/* ── 패널·시트·토스트 ─────────────── */
+.side-panel, .detail-sheet, .filter-sheet { background: #fff !important; }
+.panel-backdrop, .detail-backdrop, .sheet-backdrop { background: rgba(25, 31, 40, .45) !important; }
+.panel-title h2, .detail-sheet > h2 { color: var(--rk-text) !important; font-weight: 750 !important; letter-spacing: -.02em !important; }
+.status-toast {
+  border: 1px solid var(--rk-border) !important;
+  border-radius: 14px !important;
+  background: #fff !important;
+  color: var(--rk-text) !important;
+  box-shadow: 0 12px 36px rgba(25, 31, 40, .12) !important;
+  font-size: 12px !important;
+}
+.application-stage-buttons button.active { border-color: var(--rk-accent) !important; background: var(--rk-accent) !important; box-shadow: none !important; }
+.application-toolbar button.active { color: var(--rk-accent) !important; box-shadow: inset 0 -2px var(--rk-accent) !important; }
+.choice-grid button.selected { border-color: var(--rk-accent) !important; background: var(--rk-accent) !important; }
+.choice-grid button.selected > span { border-color: var(--rk-accent-tint) !important; background: var(--rk-accent-tint) !important; color: var(--rk-accent) !important; }
+.alternate-sources a { border-color: var(--rk-border) !important; border-radius: 11px !important; color: var(--rk-sub) !important; }
+.feed-missing { background: var(--rk-warn-tint) !important; color: var(--rk-warn) !important; border-radius: 11px !important; }
+
+/* 빈 상태·스켈레톤 */
+.empty-state > span { background: var(--rk-surface) !important; color: var(--rk-sub) !important; border-radius: 14px !important; }
+.empty-state h3 { color: var(--rk-text) !important; }
+.empty-state p { color: var(--rk-sub) !important; }
+.empty-state.error > span { background: #fdf0ee !important; color: var(--rk-danger) !important; }
+.job-skeleton { border-bottom: 1px solid var(--rk-border) !important; }
+.job-skeleton i { border-radius: 14px !important; }
+
+/* 페이지네이션 */
+.jobs-focus-shell .job-list-pager { border-top: 0 !important; padding-top: 18px !important; }
+.jobs-focus-shell .job-list-pager button {
+  border: 1px solid var(--rk-border) !important;
+  border-radius: 12px !important;
+  background: #fff !important;
+  color: var(--rk-sub) !important;
+}
+.jobs-focus-shell .job-list-pager button:hover { color: var(--rk-accent) !important; border-color: var(--rk-accent) !important; }
+.jobs-focus-shell .job-list-pager-track { background: var(--rk-surface) !important; }
+.jobs-focus-shell .job-list-pager-track i { background: var(--rk-accent) !important; }
+
+/* 데이터 신뢰 배너 */
+.data-trust-bar {
+  border: 1px solid var(--rk-warn) !important;
+  border-radius: 14px !important;
+  background: var(--rk-warn-tint) !important;
+}
+.data-trust-bar b { color: var(--rk-text) !important; }
+.data-trust-bar span { color: var(--rk-sub) !important; }
+
+/* 소스 상태 */
+.source-health > span.pending { background: var(--rk-warn-tint) !important; color: var(--rk-warn) !important; }
+.source-health > span.attention { background: #fdf0ee !important; color: var(--rk-danger) !important; }
+.source-health > span.empty { background: var(--rk-surface) !important; color: var(--rk-sub) !important; }
+.application-focus > div > button > span.today { background: var(--rk-warn-tint) !important; color: var(--rk-warn) !important; }
+.application-focus > div > button > span.overdue { background: #fdf0ee !important; color: var(--rk-danger) !important; }
+
+/* ── 공고 상세 페이지 ─────────────────── */
+.application-tier-summary { border-color: var(--rk-border) !important; box-shadow: none !important; }
+.application-tier-summary.tier-S { --tier-surface: var(--rk-accent-tint); --tier-accent: var(--rk-accent); --tier-grade: var(--rk-accent); }
+.application-tier-summary.tier-A { --tier-surface: #fff; --tier-accent: var(--rk-accent); --tier-grade: var(--rk-accent-tint); }
+.application-tier-summary.tier-B { --tier-surface: #fff; --tier-accent: var(--rk-sub); --tier-grade: var(--rk-surface); }
+.application-tier-summary.tier-C { --tier-surface: #fff; --tier-accent: var(--rk-faint); --tier-grade: var(--rk-surface); }
+.application-tier-summary.tier-exclude { --tier-surface: #fff; --tier-accent: var(--rk-danger); --tier-grade: #fdf0ee; }
+.application-tier-summary.tier-S .application-tier-grade { color: #fff !important; }
+.application-tier-grade { border-radius: 12px !important; font-weight: 800 !important; }
+.tier-S .application-tier-grade, .application-tier-grade.tier-S { background: var(--rk-accent) !important; color: #fff !important; }
+.tier-A .application-tier-grade { background: var(--rk-accent-tint) !important; color: var(--rk-accent) !important; }
+.tier-B .application-tier-grade { background: var(--rk-surface) !important; color: var(--rk-sub) !important; }
+.tier-C .application-tier-grade, .tier-exclude .application-tier-grade { background: var(--rk-surface) !important; color: var(--rk-faint) !important; }
+.posting-cta a[data-testid="apply-original"], .detail-apply, .posting-actions a {
+  border-radius: 13px !important;
+  background: var(--rk-accent) !important;
+  color: #fff !important;
+}
+.posting-cta a[data-testid="apply-original"]:hover, .detail-apply:hover, .posting-actions a:hover { background: var(--rk-accent-deep) !important; }
+.posting-deadline strong { color: var(--rk-text) !important; }
+.posting-deadline.today strong, .posting-deadline.soon strong { color: var(--rk-warn) !important; }
+.posting-deadline.closed strong { color: var(--rk-faint) !important; }
+.posting-side, .posting-cta { border-color: var(--rk-border) !important; }
+.detail-hide { border-radius: 12px !important; }
+.detail-tab, .posting-tab { border-radius: 10px !important; }
+.detail-tab.active, .posting-tab.active { color: var(--rk-accent) !important; }
+.detail-section-heading > span { color: var(--rk-sub) !important; }
+
+/* 모바일 */
+@media (max-width: 760px) {
+  .focus-header {
+    background: #fff !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  /* 목록 패널 배경을 데스크톱과 같은 아이보리로 — 모바일 전용 흰색/회색 패널 제거 */
+  .jobs-focus-shell .jobs-panel,
+  .jobs-focus-shell .recommended-jobs-panel:has(.application-tier-list),
+  .jobs-focus-shell .jobs-panel > .list-title,
+  .jobs-focus-shell .saved-panel,
+  .jobs-focus-shell .hidden-panel {
+    background: transparent !important;
+  }
+  .mobile-refresh-button { margin-right: 0 !important; }
+  /* 구 디자인의 활성 탭 밑줄 잔재 제거 — 검은 필 아래 초록 바가 삐져나오던 것 */
+  .jobs-focus-shell .discovery-tabs button::after { display: none !important; }
+  /* 헤더 도구 — 흰 필 대신 깔끔한 아이콘 버튼으로 통일 */
+  .focus-header-tools .feedback-menu-button,
+  .focus-header-tools .hidden-menu-button,
+  .focus-header-tools .focus-sync {
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+  /* 상단 존 여백 — 답답하지 않게 그룹 사이 호흡 확보 */
+  .jobs-focus-shell .discovery-panel { padding: 24px 18px 14px !important; }
+  .jobs-focus-shell .discovery-tabs { margin: 16px 0 4px !important; }
+  .jobs-focus-shell .recommended-scope-row { padding: 4px 18px 14px !important; }
+  .mobile-topbar .icon-button { border-color: var(--rk-border) !important; background: #fff !important; color: var(--rk-sub) !important; }
+  .mobile-bottom-nav .primary-nav { background: #fff !important; border-top: 1px solid var(--rk-border-soft) !important; border-radius: 0 !important; padding: 0 !important; }
+  .mobile-bottom-nav .primary-nav button.active { color: var(--rk-accent) !important; box-shadow: inset 0 2px var(--rk-accent) !important; background: transparent !important; }
+  .mobile-stage-tabs button.active { border-color: var(--rk-accent) !important; background: var(--rk-accent) !important; }
+  .jobs-focus-shell .job-card-main {
+    padding: 13px 16px 8px !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-rows: auto auto !important;
+  }
+  .jobs-focus-shell .job-kicker { min-height: 0 !important; padding-right: 0 !important; }
+  .jobs-focus-shell .job-copy h3 { margin-top: 6px !important; font-size: 16px !important; }
+  .jobs-focus-shell .job-copy > p { font-size: 13px !important; }
+  .jobs-focus-shell .job-card-actions { right: 10px !important; top: auto !important; bottom: 8px !important; flex-direction: row !important; }
+  .jobs-focus-shell .job-primary-meta { margin-top: 8px !important; padding: 8px 74px 0 0 !important; gap: 14px !important; }
+  .jobs-focus-shell .job-primary-meta .job-meta { position: static !important; left: auto !important; max-width: none !important; min-height: 0 !important; background: transparent !important; }
+  .jobs-focus-shell .discovery-panel { padding: 20px 18px 10px !important; border-radius: 20px 20px 0 0 !important; }
+  .jobs-focus-shell .discovery-intro h1 { font-size: 24px !important; }
+  .jobs-focus-shell .discovery-intro p { font-size: 12.5px !important; }
+  .jobs-focus-shell .recommended-scope-row { padding: 0 18px 12px !important; }
+  .jobs-focus-shell .search-row { padding: 0 18px 18px !important; border-radius: 0 0 20px 20px !important; margin-bottom: 16px !important; }
+  .jobs-focus-shell .search-row:has(+ .mobile-quick-filters) { border-radius: 0 !important; margin-bottom: 0 !important; padding-bottom: 12px !important; }
+  .jobs-focus-shell .mobile-quick-filters { background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 100%), var(--rk-hero) !important; margin: 0 0 18px !important; padding: 0 18px 20px !important; border-radius: 0 0 20px 20px !important; }
+  .jobs-focus-shell .overlooked-panel { padding: 4px 16px 16px !important; border-radius: 18px !important; margin-bottom: 22px !important; }
+  /* 모드 탭 — 좁은 폭에서 건수가 다음 줄로 밀리지 않도록 라벨·건수 2단 구조 */
+  .discovery-tabs { width: 100% !important; }
+  .discovery-tabs button {
+    flex: 1 1 0 !important;
+    flex-direction: column !important;
+    flex-wrap: nowrap !important;
+    gap: 2px !important;
+    padding: 8px 4px !important;
+    min-height: 0 !important;
+    white-space: nowrap !important;
+  }
+  .discovery-tabs button .discovery-tab-label { font-size: 12px !important; }
+  .discovery-tabs button b { font-size: 14px !important; font-weight: 750 !important; }
+  /* 지역 스코프 — 라벨이 단어 중간에 끊기지 않게 축소·고정 */
+  .region-scope { gap: 5px !important; padding: 5px !important; }
+  .region-scope button {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 2px !important;
+    padding: 10px 8px !important;
+    min-width: 0 !important;
+  }
+  .region-scope button span { font-size: 12.5px !important; white-space: nowrap !important; letter-spacing: -.02em !important; }
+  .region-scope button small { font-size: 10px !important; white-space: nowrap !important; }
+  /* 정렬 행 — 건수 왼쪽, 정렬·새로고침 오른쪽으로 정돈 */
+  .jobs-focus-shell .jobs-panel .list-title-actions { gap: 8px !important; }
+  .jobs-focus-shell .result-count {
+    min-height: 30px !important;
+    padding: 0 10px !important;
+    font-size: 11.5px !important;
+  }
+  .jobs-focus-shell .job-sort-control { padding: 3px !important; }
+  .jobs-focus-shell .job-sort-control button { min-height: 32px !important; padding: 0 9px !important; font-size: 11.5px !important; }
+  /* 등급 섹션 — 데스크톱과 동일하게 밴드 + 흰 카드 구조 (박스 프레임 제거) */
+  .jobs-focus-shell .application-tier-section {
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    overflow: visible !important;
+  }
+  .jobs-focus-shell .application-tier-section + .application-tier-section { border-top: 0 !important; }
+  .jobs-focus-shell .application-tier-cards {
+    padding-inline: 0 !important;
+    border-top: 0 !important;
+    background: transparent !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+  .jobs-focus-shell .application-tier-list { gap: 20px !important; padding: 0 14px !important; }
+  .jobs-focus-shell .job-list-group { margin: 0 0 10px !important; }
+  .jobs-focus-shell .tier-collapse-tools { margin: 8px 0 2px !important; padding: 0 4px !important; }
+}
